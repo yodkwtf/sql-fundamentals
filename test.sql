@@ -1,0 +1,4 @@
+CREATE DATABASE cats;
+
+
+DROP DATABASE cats;
