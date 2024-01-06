@@ -1,6 +1,6 @@
 # SQL Fundamentals
 
-Welcome to the "SQL Fundamentals" repository! This repository serves as a resource for learning and practicing the basics of SQL. Whether you are a beginner getting started with databases or someone looking to refresh their SQL skills, this repository aims to provide hands-on examples, exercises, and explanations to help you grasp the foundational concepts of SQL.
+Welcome to the "SQL Fundamentals" repository! This repository serves as a resource for learning and practicing the basics of SQL. Whether you are a beginner getting started with databases or someone looking to refresh your SQL skills, this repository aims to provide hands-on examples, exercises, and explanations to help you grasp the foundational concepts of SQL.
 
 ## Table of Contents
 
