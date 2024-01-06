@@ -1,8 +1,8 @@
 -- create a new table for workers
 CREATE TABLE workers(
-  first_name varchar(20),
-  last_name varchar(20),
-  age int
+  first_name VARCHAR(20),
+  last_name VARCHAR(20),
+  age INT
 );
 
 
