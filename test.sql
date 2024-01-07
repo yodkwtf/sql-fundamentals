@@ -4,6 +4,10 @@ CREATE DATABASE cats;
 USE cats;
 
 
+SELECT
+  DATABASE();
+
+
 CREATE TABLE table_name(name VARCHAR(50), amount INT);
 
 
