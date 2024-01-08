@@ -17,4 +17,4 @@ UPDATE
 SET
   price = 450
 WHERE
-  price >= 500
+  price >= 500;
