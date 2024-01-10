@@ -17,6 +17,13 @@ FROM
 	books;
 
 
+-- make f_name a palindrome
+SELECT
+	CONCAT(author_fname, REVERSE(author_fname)) AS 'palindrome'
+FROM
+	books;
+
+
 -- null exception
 SELECT
 	REVERSE(NULL);
