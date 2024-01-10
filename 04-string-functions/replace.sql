@@ -1,4 +1,4 @@
--- repleace sql with MySQL
+-- replace sql with MySQL
 SELECT
 	REPLACE('www.sql.com', 'sql', 'MySQL');
 
