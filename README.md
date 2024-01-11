@@ -8,6 +8,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 2. [Inserting Data](./02-inserting-data/)
 3. [CRUD Basics](./03-crud-basics/)
 4. [String Functions](./04-string-functions/)
+5. [Refining Selections](./05-refining-selections/)
 
 ## Getting Started
 
