@@ -1,4 +1,4 @@
--- reverse and uppercase the following senetence
+-- reverse and uppercase the following sentence
 --'Why does my cat look at me with such disdain?'
 SELECT
   REVERSE(
