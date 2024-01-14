@@ -9,6 +9,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 3. [CRUD Basics](./03-crud-basics/)
 4. [String Functions](./04-string-functions/)
 5. [Refining Selections](./05-refining-selections/)
+6. [Aggregate Functions](./06-aggregate-functions/)
 
 ## Getting Started
 
