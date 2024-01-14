@@ -39,3 +39,26 @@ GROUP BY
   released_year
 ORDER BY
   released_year;
+
+
+-- # group by multiple cols
+-- grouping by only l_name (issue)
+SELECT
+  author_lname,
+  COUNT(*)
+FROM
+  books
+GROUP BY
+  author_lname;
+
+
+-- group by multiple columns (f_name and l_name) (soln)
+SELECT
+  author_fname,
+  author_lname,
+  COUNT(*)
+FROM
+  books
+GROUP BY
+  author_lname,
+  author_fname;
