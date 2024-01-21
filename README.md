@@ -10,6 +10,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 4. [String Functions](./04-string-functions/)
 5. [Refining Selections](./05-refining-selections/)
 6. [Aggregate Functions](./06-aggregate-functions/)
+7. [Data Types in SQL](./07-data-types/)
 
 ## Getting Started
 
