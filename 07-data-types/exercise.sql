@@ -1,0 +1,15 @@
+-- #1. What's good use case for 'CHAR'? Give example.
+-- #2.What would be a good type for the following table fields?
+-- CREATE TABLE inventory (
+--   item_name _________,
+--   price ____________, (always less than 1 Mil, will only have 2 decimals)
+--   quantity _________
+-- );
+-- #3. What's the difference between 'TIMESTAMP' and 'DATETIME'?
+-- #4. Print out the current time.
+-- #5. Print out current date.
+-- #6. Print out day of the week in number.
+-- #7. Print out day of the week in name.
+-- #8. Print out current date and time in format mm/dd/yyyy hh:mm:ss.
+-- #9. Print out current date and time in format `January 2nd at 3:15`, `April 1st at 10:18`.
+-- #10. Create a tweets table that stores - the tweet content (180 char), a username, and time it was created.
