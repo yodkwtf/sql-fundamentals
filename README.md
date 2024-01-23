@@ -11,6 +11,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 5. [Refining Selections](./05-refining-selections/)
 6. [Aggregate Functions](./06-aggregate-functions/)
 7. [Data Types in SQL](./07-data-types/)
+8. [Comparison and Logical Operators](./08-logical-operators/)
 
 ## Getting Started
 
@@ -28,7 +29,7 @@ To get started with the examples and exercises in this repository, follow these 
    cd sql-fundamentals
    ```
 
-3. Open the SQL files in your preferred SQL environment (e.g., MySQL, PostgreSQL, SQLite).
+3. Open the SQL files in your favorite text editor or IDE. I recommend [Visual Studio Code](https://code.visualstudio.com/).
 
 4. Follow the comments and instructions within the SQL files to understand and execute the queries.
 
