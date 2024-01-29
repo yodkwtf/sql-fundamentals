@@ -12,6 +12,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 6. [Aggregate Functions](./06-aggregate-functions/)
 7. [Data Types in SQL](./07-data-types/)
 8. [Comparison and Logical Operators](./08-logical-operators/)
+9. [Constraints and Alter Table](./09-constraints-and-alter-table/)
 
 ## Getting Started
 
