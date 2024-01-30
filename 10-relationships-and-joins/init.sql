@@ -1,0 +1,4 @@
+CREATE DATABASE shop;
+
+
+USE shop;
