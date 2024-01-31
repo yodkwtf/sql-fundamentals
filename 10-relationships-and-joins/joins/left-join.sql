@@ -19,6 +19,14 @@ FROM
 
 
 -- # LEFT JOIN with GROUP BY
-SELECT first_name, last_name, SUM(amount), IFNULL(SUM(amount), 0) FROM customers
-LEFT JOIN orders ON orders.customer_id = customers.id
-GROUP BY first_name, last_name;
+SELECT
+  first_name,
+  last_name,
+  SUM(amount),
+  IFNULL(SUM(amount), 0)
+FROM
+  customers
+  LEFT JOIN orders ON orders.customer_id = customers.id
+GROUP BY
+  first_name,
+  last_name;
