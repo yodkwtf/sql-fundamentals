@@ -16,6 +16,8 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
    - [Constraints](./09-constraints-and-alter-table/constraints/)
    - [Alter Table](./09-constraints-and-alter-table/alter-table/)
 10. [Relationships and Joins](./10-relationships-and-joins/)
+    - [Joins and Its Types](./10-relationships-and-joins/joins/)
+    - [Many to Many Relationships](./10-relationships-and-joins/many-to-many/)
 
 ## Getting Started
 
@@ -40,3 +42,7 @@ To get started with the examples and exercises in this repository, follow these 
 ## Contributing
 
 If you find any issues, have suggestions, or want to contribute additional SQL examples, feel free to open an issue or submit a pull request. Your contributions are highly welcome!
+
+## Contact
+
+If you have any questions or want to reach out to me, you can find me on [Twitter](https://twitter.com/yodkwtf) or [LinkedIn](https://www.linkedin.com/in/durgesh-chaudhary/).
