@@ -18,6 +18,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 10. [Relationships and Joins](./10-relationships-and-joins/)
     - [Joins and Its Types](./10-relationships-and-joins/joins/)
     - [Many to Many Relationships](./10-relationships-and-joins/many-to-many/)
+11. [Views, Modes and More!](./11-views-and-modes/)
 
 ## Getting Started
 
