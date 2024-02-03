@@ -9,7 +9,7 @@ FROM
 SELECT
   emp_no,
   department,
-  AVG(salary) over(PARTITION BY department) AS department_avg,
+  AVG(salary) OVER(PARTITION BY department) AS department_avg,
   AVG(salary) OVER() AS company_avg
 FROM
   employees;
@@ -18,8 +18,8 @@ FROM
 SELECT
   emp_no,
   department,
-  COUNT(salary) over(PARTITION BY department) AS department_count,
-  AVG(salary) over(PARTITION BY department) AS department_avg,
+  COUNT(salary) OVER(PARTITION BY department) AS department_count,
+  AVG(salary) OVER(PARTITION BY department) AS department_avg,
   AVG(salary) OVER() AS company_avg
 FROM
   employees;
