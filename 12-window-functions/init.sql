@@ -1,4 +1,4 @@
-CREATE TABLE emps(
+CREATE TABLE employees (
   emp_no INT PRIMARY KEY AUTO_INCREMENT,
   department VARCHAR(20),
   salary INT
@@ -6,35 +6,32 @@ CREATE TABLE emps(
 
 
 INSERT INTO
-  emps(department, salary)
+  employees (department, salary)
 VALUES
+  ('engineering', 80000),
+  ('engineering', 69000),
+  ('engineering', 70000),
+  ('engineering', 103000),
+  ('engineering', 67000),
+  ('engineering', 89000),
+  ('engineering', 91000),
   ('sales', 59000),
-  ('sales', 58000),
+  ('sales', 70000),
+  ('sales', 159000),
+  ('sales', 72000),
   ('sales', 60000),
-  ('developer', 119000),
-  ('developer', 131000);
+  ('sales', 61000),
+  ('sales', 61000),
+  ('customer service', 38000),
+  ('customer service', 45000),
+  ('customer service', 61000),
+  ('customer service', 40000),
+  ('customer service', 31000),
+  ('customer service', 56000),
+  ('customer service', 55000);
 
 
 SELECT
   *
 FROM
-  emps;
-
-
--- Using GROUP BY
-SELECT
-  department,
-  ROUND(AVG(salary), 2) AS avg_salary
-FROM
-  emps
-GROUP BY
-  department;
-
-
--- Using window function
-SELECT
-  department,
-  salary,
-  AVG(salary) OVER(PARTITION BY department) AS avg_salary
-FROM
-  emps;
+  employees;
