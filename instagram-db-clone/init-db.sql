@@ -4,4 +4,7 @@ CREATE DATABASE insta_db;
 USE insta_db;
 
 
+SHOW TABLES;
+
+
 DROP DATABASE IF EXISTS insta_db;
