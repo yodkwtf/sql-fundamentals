@@ -1,0 +1,14 @@
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username varchar(255) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DESC users;
+
+
+SELECT
+  *
+FROM
+  users;
