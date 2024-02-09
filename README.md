@@ -38,6 +38,44 @@ To get started with the examples and exercises in this repository, follow these 
 
 4. Follow the comments and instructions within the SQL files to understand and execute the queries.
 
+## Resources
+
+Here are some additional resources to help you learn SQL:
+
+#### Beginner to Intermediate SQL
+
+- https://www.educba.com/data-science/data-science-tutorials/mysql-tutorial/
+- https://www.w3resource.com/mysql/mysql-tutorials.php
+- https://www.geeksforgeeks.org/sql-tutorial/?ref=gcse
+- https://www.mysqltutorial.org/
+- https://www.w3schools.com/sql/
+- https://www.geeksengine.com/database/sample/
+- https://www.khanacademy.org/computing/computer-programming/sql/
+
+#### More Advanced SQL
+
+- https://www.hackerrank.com/domains/sql
+- https://leetcode.com/study-plan/sql/
+- https://www.tutorialspoint.com/mysql/index.htm
+- https://sqlzoo.net/wiki/SQL_Tutorial
+
+#### YouTube Creators (Advanced)
+
+- https://www.youtube.com/c/techTFQ
+- https://www.youtube.com/c/LearnatKnowstar
+- https://www.youtube.com/channel/UCfGTc8zyBjCGg-Ilc4oAxEg/videos
+
+#### Transactional Queries
+
+- https://www.linode.com/docs/guides/a-primer-on-sql-transactions/
+- https://www.geeksforgeeks.org/sql-transactions/
+- https://www.sqlshack.com/sql-transaction/
+- https://www.tutorialspoint.com/sql/sql-transactions.htm
+
+#### SQL Skill Assessment
+
+- https://www.testdome.com/tests/mysql-online-test/108
+
 ## Contributing
 
 If you find any issues, have suggestions, or want to contribute additional SQL examples, feel free to open an issue or submit a pull request. Your contributions are highly welcome!
