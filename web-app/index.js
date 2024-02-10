@@ -1,14 +1,13 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import connection from './dbConnection';
+import connection from './dbConnection.js';
 
-dotenv.config();
 const app = express();
 
 // middleware
-app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // routes
 app.get('/', (req, res) => {

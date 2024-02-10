@@ -1,4 +1,5 @@
-import connection from './dbConnection';
+import { faker } from '@faker-js/faker';
+import connection from './dbConnection.js';
 
 const data = [];
 for (let i = 0; i < 150; i++) {
