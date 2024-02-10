@@ -1,19 +1,14 @@
 import express from 'express';
-import mysql from 'mysql2';
 import dotenv from 'dotenv';
+import connection from './dbConnection';
 
 dotenv.config();
-
 const app = express();
 
-// create a mysql connection
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+// middleware
+app.set('view engine', 'ejs');
 
+// routes
 app.get('/', (req, res) => {
   res.send('Welcome to Subscribe Web App!!!');
 });
@@ -27,12 +22,12 @@ app.get('/subscribe', (req, res) => {
       console.log('Error in query: ', error);
       return res.status(500).json({ error });
     }
-    console.log('Results: ', results);
     const count = results[0].count;
-    res.send(`We have ${count} users!!!`);
+    return res.render('index', { count });
   });
 });
 
+// start the server
 app.listen(8080, () => {
   console.log('Server is running on port 8080!!!');
 });
