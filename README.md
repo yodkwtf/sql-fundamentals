@@ -17,6 +17,7 @@ Welcome to the "SQL Fundamentals" repository! This repository serves as a resour
 11. [Views, Modes and More!](./11-views-and-modes/)
 12. [Window Functions](./12-window-functions/)
 13. [Instagram DB Clone](./instagram-db-clone/)
+14. [Web App with SQL](./web-app/)
 
 ## Getting Started
 
