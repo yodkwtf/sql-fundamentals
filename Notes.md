@@ -1,5 +1,27 @@
 # SQL Fundamentals
 
+Structured Query Language (SQL) is a standard language to communicate with a database and perform tasks such as querying, updating, inserting and deleting data. It is used to interact with relational databases such as MySQL, PostgreSQL, SQL Server, Oracle, etc.
+
+## Table of Contents
+
+1. [Introduction to Databases](#databases)
+2. [Tables in MySQL](#tables)
+3. [Constraints](#constraints)
+4. [Inserting Data](#inserting-data)
+5. [CRUD Operations](#crud-operations)
+6. [String Functions](#string-functions)
+7. [Refining Selections](#refining-selections)
+8. [Aggregate Functions](#aggregate-functions)
+9. [Data Types](#data-types-1)
+10. [Date and Time](#date-and-time)
+11. [Comparison and Logical Operators](#comparison-and-logical-operators)
+12. [Alter Table](#alter-table)
+13. [Data Relationships](#data-relationships)
+14. [Joins and Its Types](#joins)
+15. [Views and SQL Modes](#views-and-sql-modes)
+16. [Window Functions](#window-functions)
+17. [Database Triggers](#database-triggers)
+
 <!-- Introduction (47) -->
 <!-- MySQL vs SQL (49 & 50) -->
 <!-- Database vs DBMS (49) -->
@@ -109,34 +131,7 @@ Each column in a table has a specific data type. The data type defines the kind 
   multi-line comment */
   ```
 
-## Inserting Data
-
-Insert statements are used to insert data into a table. They take the table name, columns and values to be inserted.
-
-#### Insert Queries
-
-- Inset data into a table
-
-  ```sql
-  INSERT INTO my_table (id, name, age) VALUES (1, 'John', 25);
-  ```
-
-- Retrieve all rows from a table
-
-  ```sql
-  SELECT * FROM my_table;
-  ```
-
-- Insert multiple rows into a table
-
-  ```sql
-  INSERT INTO my_table (id, name, age)
-  VALUES
-    (2, 'Jane', 30),
-    (3, 'Doe', 35);
-  ```
-
-### Table Constraints
+## Constraints
 
 Constraints are used to specify rules for the data in a table. They are used to limit the type of data that can go into a table.
 
@@ -177,6 +172,19 @@ Constraints are used to specify rules for the data in a table. They are used to 
   );
   ```
 
+#### CHECK
+
+- Ensures that all values in a column satisfy a specific condition.
+
+  ```sql
+  CREATE TABLE my_table (
+    id INT,
+    name VARCHAR(100),
+    age INT,
+    CHECK (age >= 18)
+  );
+  ```
+
 #### PRIMARY KEY
 
 - Uniquely identifies each record in a table
@@ -200,6 +208,59 @@ Constraints are used to specify rules for the data in a table. They are used to 
     name VARCHAR(100),
     age INT
   );
+  ```
+
+##### Named Constraints
+
+- Constraints can also be named
+
+  ```sql
+  CREATE TABLE my_table (
+    id INT,
+    name VARCHAR(100),
+    age INT,
+    CONSTRAINT pk_id PRIMARY KEY (id)
+  );
+  ```
+
+##### Multiple Column Constraints
+
+- Constraints can be created from multiple columns
+
+  ```sql
+  CREATE TABLE my_table (
+    id INT,
+    name VARCHAR(100),
+    age INT,
+    CONSTRAINT pk_id_name PRIMARY KEY (id, name)
+  );
+  ```
+
+## Inserting Data
+
+Insert statements are used to insert data into a table. They take the table name, columns and values to be inserted.
+
+#### Insert Queries
+
+- Inset data into a table
+
+  ```sql
+  INSERT INTO my_table (id, name, age) VALUES (1, 'John', 25);
+  ```
+
+- Retrieve all rows from a table
+
+  ```sql
+  SELECT * FROM my_table;
+  ```
+
+- Insert multiple rows into a table
+
+  ```sql
+  INSERT INTO my_table (id, name, age)
+  VALUES
+    (2, 'Jane', 30),
+    (3, 'Doe', 35);
   ```
 
 ## CRUD Operations
@@ -686,25 +747,25 @@ Date and time data types are used to store date and time values.
 
 Date functions are used to perform operations on date and time values.
 
-- `DAY()` -> Get the day of the month
+- Get the day of the month
 
   ```sql
   SELECT DAY('2021-08-04'); -- 4
   ```
 
-- `DAYNAME()` -> Get the name of the day
+- Get the name of the day
 
   ```sql
   SELECT DAYNAME('2021-08-04'); -- Wednesday
   ```
 
-- `DAYOFYEAR()` -> Get the day of the year
+- Get the day of the year
 
   ```sql
   SELECT DAYOFYEAR('2021-08-04'); -- 216
   ```
 
-- `MONTHNAME()` -> Get the name of the month
+- Get the name of the month
 
   ```sql
   SELECT MONTHNAME('2021-08-04'); -- August
@@ -714,13 +775,13 @@ Date functions are used to perform operations on date and time values.
 
 Time functions are used to perform operations on time values.
 
-- `HOUR()` -> Get the hour
+- Get the hour
 
   ```sql
   SELECT HOUR('12:30:45'); -- 12
   ```
 
-- `MINUTE()` -> Get the minute
+- Get the minute
 
   ```sql
   SELECT MINUTE('12:30:45'); -- 30
@@ -734,13 +795,6 @@ We can format date and time values using the `DATE_FORMAT` function and a bunch 
 SELECT DATE_FORMAT('2021-08-04', '%d-%m-%Y'); -- 04-08-2021
 ```
 
-- `%d` -> Day of the month
-- `%m` -> Month
-- `%Y` -> Year
-- `%H` -> Hour
-- `%i` -> Minute
-- `%s` -> Second
-
 ```sql
 SELECT DATE_FORMAT('12:30:45', '%H:%i:%s'); -- 12:30:45
 ```
@@ -749,26 +803,616 @@ SELECT DATE_FORMAT('12:30:45', '%H:%i:%s'); -- 12:30:45
 
 We can perform mathematical operations on date and time values.
 
-- `DATE_ADD()` -> Add a date or time interval to a date
+- Add a date or time interval to a date
 
   ```sql
   SELECT DATE_ADD('2021-08-04', INTERVAL 1 DAY); -- 2021-08-05
   ```
 
-- `DATE_SUB()` -> Subtract a date or time interval from a date
+- Subtract a date or time interval from a date
 
   ```sql
   SELECT DATE_SUB('2021-08-04', INTERVAL 1 DAY); -- 2021-08-03
   ```
 
-- `DATEDIFF()` -> Get the difference between two dates
+- Get the difference between two dates
 
   ```sql
   SELECT DATEDIFF('2021-08-04', '2021-08-01'); -- 3
   ```
 
-- `TIMESTAMPDIFF()` -> Get the difference between two timestamps
+- Get the difference between two timestamps
 
   ```sql
   SELECT TIMESTAMPDIFF(MINUTE, '2021-08-04 12:30:45', '2021-08-04 12:45:45'); -- 15
+  ```
+
+## Comparison and Logical Operators
+
+Comparison and logical operators are used to compare values and combine multiple conditions in a WHERE clause.
+
+### Comparison Operators
+
+Comparison operators are used to compare two values.
+
+#### NOT EQUAL
+
+- Used to compare if two values are not equal
+
+  ```sql
+  SELECT * FROM my_table WHERE age != 25;
+  ```
+
+#### GREATER THAN
+
+- Used to compare if a value is greater than another value
+
+  ```sql
+  SELECT * FROM my_table WHERE age > 25;
+  ```
+
+#### LESS THAN
+
+- Used to compare if a value is less than another value
+
+  ```sql
+  SELECT * FROM my_table WHERE age < 25;
+  ```
+
+#### GREATER THAN OR EQUAL TO
+
+- Compare if a value is greater than or equal to another value
+
+  ```sql
+  SELECT * FROM my_table WHERE age >= 25;
+  ```
+
+#### LESS THAN OR EQUAL TO
+
+- Compare if a value is less than or equal to another value
+
+  ```sql
+  SELECT * FROM my_table WHERE age <= 25;
+  ```
+
+#### BETWEEN
+
+- Used to select values within a range
+
+  ```sql
+  SELECT * FROM my_table WHERE age BETWEEN 20 AND 30;
+  ```
+
+#### IN
+
+- Used to specify multiple values in a WHERE clause
+
+  ```sql
+  SELECT * FROM my_table WHERE age IN (20, 25, 30);
+  ```
+
+#### NOT LIKE
+
+- Used to compare if a value is not like another value
+
+  ```sql
+  SELECT * FROM my_table WHERE name NOT LIKE 'J%';
+  ```
+
+#### IS NULL
+
+- Used to compare if a value is NULL
+
+  ```sql
+  SELECT * FROM my_table WHERE age IS NULL;
+  ```
+
+#### IS NOT NULL
+
+- Used to compare if a value is not NULL
+
+  ```sql
+  SELECT * FROM my_table WHERE age IS NOT NULL;
+  ```
+
+### Logical Operators
+
+Logical operators are used to combine multiple conditions.
+
+#### AND
+
+- Used to combine multiple conditions
+
+  ```sql
+  SELECT * FROM my_table WHERE age > 20 AND age < 30;
+  ```
+
+#### OR
+
+- Used to combine multiple conditions
+
+  ```sql
+  SELECT * FROM my_table WHERE age = 20 OR age = 30;
+  ```
+
+#### NOT
+
+- Used to negate a condition
+
+  ```sql
+  SELECT * FROM my_table WHERE NOT age = 20;
+  ```
+
+### CASE Statement
+
+The CASE statement is used to create different outputs based on different conditions.
+
+```sql
+SELECT
+  name,
+  age,
+  CASE
+    WHEN age < 20 THEN 'Young'
+    WHEN age >= 20 AND age < 30 THEN 'Adult'
+    ELSE 'Old'
+  END AS age_group
+FROM my_table;
+```
+
+## Alter Table
+
+The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+- Add a new column
+
+  ```sql
+  ALTER TABLE my_table ADD email VARCHAR(100);
+  ```
+
+- Delete a column
+
+  ```sql
+  ALTER TABLE my_table DROP COLUMN email;
+  ```
+
+- Rename a table
+
+  ```sql
+  ALTER TABLE my_table RENAME TO new_table;
+
+  RENAME TABLE my_table TO new_table;
+  ```
+
+- Renaming a column
+
+  ```sql
+  ALTER TABLE my_table RENAME COLUMN old_name TO new_name;
+  ```
+
+- Modify a column
+
+  ```sql
+  ALTER TABLE my_table MODIFY COLUMN name VARCHAR(200);
+  ```
+
+- Rename column and modify data type
+
+  ```sql
+  ALTER TABLE my_table CHANGE COLUMN old_name new_name VARCHAR(200);
+  ```
+
+- Add or drop constraints
+
+  ```sql
+  ALTER TABLE my_table ADD CONSTRAINT PRIMARY KEY (id);
+  ALTER TABLE my_table DROP CONSTRAINT PRIMARY KEY;
+  ```
+
+## Data Relationships
+
+Data relationships are used to connect data in different tables. There are three types of relationships:
+
+- One-to-One
+- One-to-Many
+- Many-to-Many
+
+### One-to-One
+
+- A record in one table is related to only one record in another table
+
+  ```sql
+  CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+  );
+
+  CREATE TABLE profiles (
+    id INT PRIMARY KEY,
+    user_id INT,
+    bio TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
+  ```
+
+### One-to-Many
+
+- A record in one table is related to many records in another table
+
+  ```sql
+  CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+  );
+
+  CREATE TABLE posts (
+    id INT PRIMARY KEY,
+    user_id INT,
+    title VARCHAR(100),
+    body TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
+  ```
+
+### Many-to-Many
+
+- Many records in one table are related to many records in another table
+
+  ```sql
+  CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+  );
+
+  CREATE TABLE courses (
+    id INT PRIMARY KEY,
+    title VARCHAR(100)
+  );
+
+  CREATE TABLE student_courses (
+    student_id INT,
+    course_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+  );
+  ```
+
+### Foreign Key
+
+- Used to link two tables together
+- A unique key in one table is used to refer to a primary key in another table
+
+  ```sql
+  CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+  );
+
+  CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
+  ```
+
+### On Delete Cascade
+
+- Used to delete related records in another table when a record is deleted from a table
+
+  ```sql
+  CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+  );
+
+  CREATE TABLE orders (
+    id INT PRIMARY KEY,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  );
+  ```
+
+## Joins
+
+Joins are used to combine rows from two or more tables based on a related column between them.
+
+### Cross Joins
+
+- Returns the Cartesian product of the two tables
+- It returns all rows from the left table and all rows from the right table
+
+  ```sql
+  SELECT users.name, orders.product
+  FROM users
+  CROSS JOIN orders;
+  ```
+
+### Inner Joins
+
+- Returns records that have matching values in both tables
+- The most common type of join
+
+  ```sql
+  SELECT users.name, orders.product
+  FROM users
+  INNER JOIN orders ON users.id = orders.user_id;
+
+  -- or
+
+  SELECT users.name, orders.product
+  FROM users
+  JOIN orders ON users.id = orders.user_id;
+  ```
+
+- Inner join with GROUP BY
+
+  ```sql
+  SELECT users.name, COUNT(orders.product) AS total_products
+  FROM users
+  INNER JOIN orders ON users.id = orders.user_id
+  GROUP BY users.name;
+  ```
+
+### Left Joins
+
+- Returns all records from the left table and the matched records from the right table
+- The result is NULL from the right side if there is no match
+
+  ```sql
+  SELECT users.name, orders.product
+  FROM users
+  LEFT JOIN orders ON users.id = orders.user_id;
+  ```
+
+- Left join with GROUP BY
+
+  ```sql
+  SELECT users.name, COUNT(orders.product) AS total_products
+  FROM users
+  LEFT JOIN orders ON users.id = orders.user_id
+  GROUP BY users.name;
+  ```
+
+### Right Joins
+
+- Returns all records from the right table and the matched records from the left table
+- The result is NULL from the left side if there is no match
+
+  ```sql
+  SELECT users.name, orders.product
+  FROM users
+  RIGHT JOIN orders ON users.id = orders.user_id;
+  ```
+
+- Right join with GROUP BY
+
+  ```sql
+  SELECT users.name, COUNT(orders.product) AS total_products
+  FROM users
+  RIGHT JOIN orders ON users.id = orders.user_id
+  GROUP BY users.name;
+  ```
+
+## Views and SQL Modes
+
+### Views
+
+- A view is a virtual table based on the result of an SQL statement
+- It's a named query stored in the database so that we can reuse it
+
+  ```sql
+  CREATE VIEW my_view AS
+  SELECT name, age FROM my_table WHERE age > 25;
+  ```
+
+- Can be used as a starting point for other queries
+
+  ```sql
+  SELECT * FROM my_view;
+  ```
+
+- Can be updated
+
+  ```sql
+  CREATE OR REPLACE VIEW my_view AS
+  SELECT name, age FROM my_table WHERE age > 30;
+  ```
+
+- Can be deleted
+
+  ```sql
+  DROP VIEW my_view;
+  ```
+
+- Can be altered
+
+  ```sql
+  CREATE OR REPLACE VIEW my_view AS
+  SELECT name, age FROM my_table WHERE age > 35;
+
+  -- Alter
+  ALTER VIEW my_view AS
+  SELECT name, age FROM my_table WHERE age > 25;
+  ```
+
+### With ROLLUP
+
+- Used to add subtotals for each group in a result set
+
+  ```sql
+  SELECT age, name, COUNT(*) FROM my_table GROUP BY age, name WITH ROLLUP;
+  ```
+
+### SQL Modes
+
+- SQL modes are used to configure the behavior of the MySQL server
+- They can be set globally, per session or per query
+
+  ```sql
+  SET GLOBAL sql_mode = 'modes';
+  SET SESSION sql_mode = 'modes';
+  ```
+
+- View the current SQL mode
+
+  ```sql
+  SELECT @@GLOBAL.sql_mode;
+  SELECT @@SESSION.sql_mode;
+  ```
+
+#### STRICT_TRANS_TABLES
+
+- Prevents us from adding wrong data to a table
+
+## Window Functions
+
+Window functions are used to perform calculations across a set of rows related to the current row.
+
+#### OVER
+
+- Used to define the window of rows that the function operates on
+
+  ```sql
+  SELECT name, age, AVG(age) OVER () AS row_num FROM my_table;
+  ```
+
+#### PARTITION BY
+
+- Used to divide the result set into partitions to which the function is applied
+
+  ```sql
+  SELECT name, age, OVER (PARTITION BY age) AS row_num FROM my_table;
+  ```
+
+#### ORDER BY
+
+- Used to sort the rows in each partition
+
+  ```sql
+  SELECT name, age, OVER (PARTITION BY age ORDER BY name) AS row_num FROM my_table;
+  ```
+
+#### RANK
+
+- Used to assign a rank to each row within a partition of a result set
+
+  ```sql
+  SELECT name, age, RANK() OVER (PARTITION BY age ORDER BY name) AS row_num FROM my_table;
+  ```
+
+#### DENSE_RANK
+
+- Used to assign a rank to each row within a partition of a result set
+
+  ```sql
+  SELECT name, age, DENSE_RANK() OVER (PARTITION BY age ORDER BY name) AS row_num FROM my_table;
+  ```
+
+#### ROW_NUMBER
+
+- Used to assign a unique number to each row within a partition of a result set
+
+  ```sql
+  SELECT name, age, ROW_NUMBER() OVER (PARTITION BY age ORDER BY name) AS row_num FROM my_table;
+  ```
+
+#### LAG and LEAD
+
+- Used to access data from a previous or next row in the result set
+
+  ```sql
+  SELECT name, age, LAG(age) OVER (ORDER BY name) AS prev_age FROM my_table;
+  SELECT name, age, LEAD(age) OVER (ORDER BY name) AS next_age FROM my_table;
+  ```
+
+#### NTILE
+
+- Used to divide the result set into a specified number of groups
+
+  ```sql
+  SELECT name, age, NTILE(4) OVER (ORDER BY name) AS group_num FROM my_table;
+  ```
+
+#### FIRST_VALUE and LAST_VALUE
+
+- Used to get the first and last value in a partition of a result set
+
+  ```sql
+  SELECT name, age, FIRST_VALUE(age) OVER (PARTITION BY name ORDER BY age) AS first_age FROM my_table;
+  SELECT name, age, LAST_VALUE(age) OVER (PARTITION BY name ORDER BY age) AS last_age FROM my_table;
+  ```
+
+## Database Triggers
+
+A trigger is a set of SQL statements that automatically "fires" when a specific event occurs in a database.
+
+#### BEFORE/AFTER INSERT
+
+- Used to perform an action before or after a new record is inserted into a table
+
+  ```sql
+  DELIMITTER $$
+    CREATE TRIGGER my_trigger
+    BEFORE INSERT ON my_table
+    FOR EACH ROW
+    BEGIN
+      INSERT INTO log_table (message) VALUES ('New record inserted');
+    END;
+  $$
+  DELIMITTER ;
+  ```
+
+#### BEFORE/AFTER UPDATE
+
+- Used to perform an action before or after a record is updated in a table
+
+  ```sql
+  DELIMITTER $$
+    CREATE TRIGGER my_trigger
+    AFTER UPDATE ON my_table
+    FOR EACH ROW
+    BEGIN
+      INSERT INTO log_table (message) VALUES ('Record updated');
+    END;
+  $$
+  DELIMITTER ;
+  ```
+
+#### BEFORE/AFTER DELETE
+
+- Used to perform an action before or after a record is deleted from a table
+
+  ```sql
+  DELIMITTER $$
+    CREATE TRIGGER my_trigger
+    BEFORE DELETE ON my_table
+    FOR EACH ROW
+    BEGIN
+      INSERT INTO log_table (message) VALUES ('Record deleted');
+    END;
+  $$
+  DELIMITTER ;
+  ```
+
+#### Managing Triggers
+
+- View all triggers in a database
+
+  ```sql
+  SHOW TRIGGERS;
+  ```
+
+- View the definition of a trigger
+
+  ```sql
+  SHOW CREATE TRIGGER my_trigger;
+  ```
+
+- Drop a trigger
+
+  ```sql
+  DROP TRIGGER my_trigger;
   ```
