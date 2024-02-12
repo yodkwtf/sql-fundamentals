@@ -1,14 +1,16 @@
 # SQL Fundamentals
 
-## Introduction to SQL
+<!-- Introduction (47) -->
+<!-- MySQL vs SQL (49 & 50) -->
+<!-- Database vs DBMS (49) -->
+<!-- Installation and Setup (50 - 52) -->
+<!-- Running SQL from Command Line (74) -->
 
-## Databases and Tables
+## Databases
 
-We can multiple databases in a single SQL Server instance. Each database can have multiple tables. Each table can have multiple columns and rows.
+A database is a collection of tables. It is a container for tables and other objects. We can multiple databases in a single SQL Server instance.
 
-### Database
-
-A database is a collection of tables. It is a container for tables and other objects.
+#### Queries
 
 - Get the list of databases in the server
 
@@ -48,11 +50,9 @@ A database is a collection of tables. It is a container for tables and other obj
 
 These are just conventions and not rules. You can use any name you want but it is a good practice to follow these conventions.
 
-### Tables
+## Tables
 
-A table is a collection of rows and columns. It is the most important aspect of Database as it stores the data.
-
-> Definition: A table is a collection of related data held in a structured format within a database.
+A table is a collection of related data held in a structured format within a database.
 
 #### Data Types
 
@@ -62,9 +62,7 @@ Each column in a table has a specific data type. The data type defines the kind 
 - **String**: CHAR, VARCHAR
 - **Date and Time**: DATE, TIME, DATETIME
 
-Data types are used when creating a new table or modifying an existing table.
-
-#### Create a Table
+#### Table Queries
 
 - Create a new table
 
@@ -113,9 +111,11 @@ Data types are used when creating a new table or modifying an existing table.
   multi-line comment */
   ```
 
-  ## Inserting Data
+## Inserting Data
 
-  Insert statements are used to insert data into a table. They take the table name, columns and values to be inserted.
+Insert statements are used to insert data into a table. They take the table name, columns and values to be inserted.
+
+#### Insert Queries
 
 - Inset data into a table
 
@@ -144,126 +144,127 @@ Constraints are used to specify rules for the data in a table. They are used to 
 
 #### NOT NULL
 
-The NOT NULL constraint enforces a column to not accept NULL values.
+- Enforces a column to not accept NULL values.
 
-```sql
-CREATE TABLE my_table (
-  id INT NOT NULL,
-  name VARCHAR(100) NOT NULL,
-  age INT
-);
-```
+  ```sql
+  CREATE TABLE my_table (
+    id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    age INT
+  );
+  ```
 
 #### DEFAULT
 
-The DEFAULT constraint is used to set a default value for a column.
+- Used to set a default value for a column.
 
-```sql
-CREATE TABLE my_table (
-  id INT,
-  name VARCHAR(100),
-  age INT DEFAULT 18
-);
-```
+  ```sql
+  CREATE TABLE my_table (
+    id INT,
+    name VARCHAR(100),
+    age INT DEFAULT 18
+  );
+  ```
 
 #### UNIQUE
 
-The UNIQUE constraint ensures that all values in a column are different.
+- Ensures that all values in a column are different.
 
-```sql
-CREATE TABLE my_table (
-  id INT UNIQUE,
-  name VARCHAR(100),
-  email VARCHAR(100) UNIQUE,
-  age INT
-);
-```
+  ```sql
+  CREATE TABLE my_table (
+    id INT UNIQUE,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    age INT
+  );
+  ```
 
 #### PRIMARY KEY
 
-The PRIMARY KEY constraint uniquely identifies each record in a table. It is very useful when multiple rows have the same value in a column. IDs are usually used as primary keys
+- Uniquely identifies each record in a table
+- IDs are used as the most common primary keys
 
-```sql
-CREATE TABLE my_table (
-  id INT PRIMARY KEY,
-  name VARCHAR(100),
-  age INT
-);
-```
+  ```sql
+  CREATE TABLE my_table (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+  );
+  ```
 
 #### AUTO_INCREMENT
 
-The AUTO_INCREMENT constraint automatically generates a unique number for each row. It is very useful when you want to generate unique IDs for each row.
+- Automatically generates a unique number for each row
 
-```sql
-CREATE TABLE my_table (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  age INT
-);
-```
+  ```sql
+  CREATE TABLE my_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+  );
+  ```
 
 ## CRUD Operations
 
 CRUD stands for Create, Read, Update and Delete. These are the four basic operations that can be performed on a database.
 
-### Create (INSERT)
+### Create
 
-The INSERT statement is used to add new rows to a table.
+- INSERT statement is used to add new rows to a table
 
-```sql
-INSERT INTO my_table (id, name, age) VALUES (1, 'John', 25);
-```
+  ```sql
+  INSERT INTO my_table (id, name, age) VALUES (1, 'John', 25);
+  ```
 
-### Read (SELECT)
+### Read
 
-The SELECT statement is used to retrieve data from a table.
+- SELECT statement is used to retrieve data from a table
 
-```sql
-SELECT * FROM my_table;
+  ```sql
+  SELECT * FROM my_table;
 
-SELECT name, age FROM my_table;
-```
+  SELECT name, age FROM my_table;
+  ```
 
 #### WHERE Clause
 
-The WHERE clause is used to filter records. It is used to extract only those records that fulfill a specified condition.
+- Used to extract only those records that fulfill a specified condition
 
-```sql
-SELECT * FROM my_table WHERE age > 25;
-```
+  ```sql
+  SELECT * FROM my_table WHERE age > 25;
+  ```
 
 #### Aliases
 
-Aliases are used to give a table, or a column in a table, a temporary name.
+- Used to give a table, or a column in a table, a temporary name
 
-```sql
-SELECT name AS full_name, age AS years FROM my_table;
-```
+  ```sql
+  SELECT name AS full_name, age AS years FROM my_table;
+  ```
 
-### Update (UPDATE)
+### Update
 
-The UPDATE statement is used to modify the existing records in a table.
+- Used to modify the existing records in a table
 
-```sql
-UPDATE my_table SET age = 30 WHERE name = 'John';
-```
+  ```sql
+  UPDATE my_table SET age = 30 WHERE name = 'John';
+  ```
 
-We can also update multiple columns at once.
+- Can also update multiple columns at once.
 
-```sql
-UPDATE my_table SET age = 30, name = 'John Doe' WHERE id = 1;
-```
+  ```sql
+  UPDATE my_table SET age = 30, name = 'John Doe' WHERE id = 1;
+  ```
 
 If there is no WHERE clause, all records will be updated.
 
-### Delete (DELETE)
+### Delete
 
-The DELETE statement is used to delete records from a table.
+- Used to delete records from a table.
 
-```sql
-DELETE FROM my_table WHERE name = 'John';
-```
+  ```sql
+  DELETE FROM my_table WHERE name = 'John';
+  ```
 
 If there is no WHERE clause, all records will be deleted.
 
@@ -273,3 +274,177 @@ If there is no WHERE clause, all records will be deleted.
 
 - DROP is used to delete a table from the database
 - DELETE is used to delete records from a table
+
+## String Functions
+
+String functions are used to perform operations on strings like searching for a substring, replacing a substring, etc.
+
+#### CONCAT
+
+- Used to combine strings
+
+  ```sql
+  SELECT CONCAT('H', 'e', 'y'); -- Hey
+  SELECT CONCAT(f_name. ' ', l_name) FROM users; -- John Doe
+  ```
+
+#### CONCAT_WS
+
+- Stands for _`CONCAT` With Separator_
+- Takes separator as first argument
+
+  ```sql
+  SELECT CONCAT_WS('/', '04', '08', '2001'); -- 04/08/2001
+  ```
+
+#### SUBSTRING
+
+- Used to extract a part of a string
+- Takes input string, start position and length as arguments
+
+  ```sql
+  SELECT SUBSTRING('Hello World', 1, 5); -- Hello
+
+  -- changing starting point
+  SELECT SUBSTRING('Hello World', 7, 5); -- World
+
+  -- specify starting point only
+  SELECT SUBSTR('Hello World', 7); -- World
+
+  -- negative starting point
+  SELECT SUBSTR('Hello World', -3); -- rld
+  ```
+
+#### REPLACE
+
+- Used to replace all occurrences of a substring within a string
+- Takes input string, old substring and new substring as arguments
+
+  ```sql
+  SELECT REPLACE('www.example.com', 'w.', 'W.'); -- wwW.example.com
+  ```
+
+#### REVERSE
+
+- Used to reverse a string
+
+  ```sql
+  SELECT REVERSE('Hello World'); -- dlroW olleH
+  ```
+
+#### CHAR_LENGTH
+
+- Used to get the length of a string
+
+  ```sql
+  SELECT CHAR_LENGTH('Hello World'); -- 11
+  ```
+
+#### UPPER and LOWER
+
+- Used to convert a string to upper or lower case
+
+  ```sql
+  SELECT UPPER('Hello World'); -- HELLO WORLD
+  SELECT LOWER('Hello World'); -- hello world
+  ```
+
+#### INSERT
+
+- Used to insert a substring into a string at a specified position
+- Takes input string, start position, how many characters to remove and new substring as arguments
+
+  ```sql
+  SELECT INSERT('Hello Bobby', 7, 4, 'There'); -- Hello Therey
+  ```
+
+#### LEFT and RIGHT
+
+- Used to extract a specified number of characters from a string, starting from the left or right
+
+  ```sql
+  SELECT LEFT('Hello World', 5); -- Hello
+  SELECT RIGHT('Hello World', 5); -- World
+  ```
+
+#### REPEAT
+
+- Used to repeat a string a specified number of times
+
+  ```sql
+  SELECT REPEAT('Hello', 3); -- HelloHelloHello
+  ```
+
+#### TRIM
+
+- Used to remove leading and trailing spaces from a string
+
+  ```sql
+  SELECT TRIM(' Hello '); -- Hello
+  ```
+
+- Can also remove leading and trailing characters
+
+  ```sql
+  SELECT TRIM(LEADING 'x' FROM 'xxxHello'); -- Hello
+  SELECT TRIM(TRAILING 'x' FROM 'Helloxxx'); -- Hello
+  SELECT TRIM(BOTH 'x' FROM 'xxxHelloxxx'); -- Hello
+  ```
+
+## Refining Selections
+
+When we want to retrieve data from a table, we can use the SELECT statement. We can also refine the selection by using a few clauses.
+
+#### DISTINCT
+
+- Used to return only distinct values
+
+  ```sql
+  SELECT DISTINCT age FROM my_table;
+  ```
+
+#### ORDER BY
+
+- Used to sort the result set in ascending or descending order
+
+  ```sql
+  SELECT * FROM my_table ORDER BY age;
+  SELECT * FROM my_table ORDER BY age DESC;
+  ```
+
+- Can also sort by multiple columns
+
+  ```sql
+  SELECT * FROM my_table ORDER BY age, name;
+  ```
+
+#### LIMIT
+
+- Used to limit the number of records returned
+
+  ```sql
+  SELECT * FROM my_table LIMIT 5;
+  ```
+
+- Specify the starting point and number of records to return
+
+  ```sql
+  SELECT * FROM my_table LIMIT 5, 10;
+  ```
+
+#### LIKE
+
+- Used to search by finding records that include the specified value
+
+  ```sql
+  SELECT * FROM my_table WHERE name LIKE 'J%';
+  SELECT * FROM my_table WHERE name LIKE 'J_n';
+
+  -- any no. of characters before or after D
+  SELECT * FROM my_table WHERE name LIKE '%D%';
+  ```
+
+##### Wildcards
+
+- `%` -> Represents zero or more characters
+- `_` -> Represents a single character
