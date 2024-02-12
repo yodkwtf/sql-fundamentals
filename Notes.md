@@ -48,8 +48,6 @@ A database is a collection of tables. It is a container for tables and other obj
 - DB name should be obvious and descriptive
 - Use underscores to separate words instead of spaces
 
-These are just conventions and not rules. You can use any name you want but it is a good practice to follow these conventions.
-
 ## Tables
 
 A table is a collection of related data held in a structured format within a database.
@@ -256,7 +254,7 @@ CRUD stands for Create, Read, Update and Delete. These are the four basic operat
   UPDATE my_table SET age = 30, name = 'John Doe' WHERE id = 1;
   ```
 
-If there is no WHERE clause, all records will be updated.
+- If there is no WHERE clause, all records will be updated.
 
 ### Delete
 
@@ -266,9 +264,9 @@ If there is no WHERE clause, all records will be updated.
   DELETE FROM my_table WHERE name = 'John';
   ```
 
-If there is no WHERE clause, all records will be deleted.
+- If there is no WHERE clause, all records will be deleted.
 
-> Rule of thumb: If update or delete statements are by mistake, they can cause a lot of damage. Therefore, it's always a good practice to first run a SELECT statement with the same WHERE clause to see which records will be affected.
+> **Rule of thumb:** If update or delete statements are by mistake, they can cause a lot of damage. Therefore, it's always a good practice to first run a SELECT statement with the same WHERE clause to see which records will be affected.
 
 #### Drop vs Delete
 
@@ -448,3 +446,329 @@ When we want to retrieve data from a table, we can use the SELECT statement. We 
 
 - `%` -> Represents zero or more characters
 - `_` -> Represents a single character
+
+## Aggregate Functions
+
+Aggregate functions are used to perform calculations on a set of values and return a single value.
+
+#### COUNT
+
+- Used to count the number of rows in a table
+
+  ```sql
+  SELECT COUNT(*) FROM my_table;
+  ```
+
+- Can also count the number of non-NULL values in a column
+
+  ```sql
+  SELECT COUNT(age) FROM my_table;
+  ```
+
+#### GROUP BY
+
+- Used to group rows that have the same values
+
+  ```sql
+  -- group by age and count the number of people in each age group
+  SELECT age, COUNT(*) FROM my_table GROUP BY age;
+  ```
+
+- One or more columns can be used to group the data
+
+  ```sql
+  SELECT age, name, COUNT(*) FROM my_table GROUP BY age, name;
+  ```
+
+#### MIN and MAX
+
+- Used to get the minimum and maximum value in a column
+
+  ```sql
+  SELECT MIN(age) FROM my_table;
+  SELECT MAX(age) FROM my_table;
+  ```
+
+- Can also be used with GROUP BY
+
+  ```sql
+  SELECT age, MIN(name) FROM my_table GROUP BY age;
+  SELECT age, MAX(name) FROM my_table GROUP BY age;
+  ```
+
+#### Subqueries
+
+- Used to nest a query within another query
+
+  ```sql
+  -- first get the maximum age and then get the name of the person with that age
+  SELECT name FROM my_table WHERE age = (SELECT MAX(age) FROM my_table);
+  ```
+
+#### SUM
+
+- Used to get the sum of a column
+
+  ```sql
+  SELECT SUM(quantity) FROM orders;
+  ```
+
+- Can also be used with GROUP BY
+
+  ```sql
+  SELECT category, SUM(quantity) FROM orders GROUP BY category;
+  ```
+
+#### AVG
+
+- Used to get the average value of a column
+
+  ```sql
+  SELECT AVG(age) FROM my_table;
+  ```
+
+- Can also be used with GROUP BY
+
+  ```sql
+  SELECT category, AVG(quantity) FROM orders GROUP BY category;
+  ```
+
+## Data Types
+
+There are many data types in SQL but only few are used frequently.
+
+#### CHAR and VARCHAR
+
+- CHAR is fixed length and VARCHAR is variable length
+- CHAR is faster for fixed length data and VARCHAR is faster for variable length data
+
+  ```sql
+  CREATE TABLE my_table (
+    marks CHAR(2),
+    email VARCHAR(100)
+  );
+  ```
+
+#### Integer Types
+
+- INT, TINYINT, SMALLINT, MEDIUMINT, BIGINT
+- Different in memory and ranges
+
+  ```sql
+  CREATE TABLE my_table (
+    id INT,
+    age TINYINT
+  );
+  ```
+
+- Range of INT: -2147483648 to 2147483647
+- Range of TINYINT: -128 to 127
+
+##### Signed and Unsigned
+
+- Signed can store both positive and negative numbers
+- Unsigned can store only positive numbers
+
+  ```sql
+  CREATE TABLE my_table (
+    id INT UNSIGNED,
+    age TINYINT UNSIGNED
+  );
+  ```
+
+- Range of INT UNSIGNED: 0 to 4294967295
+- Range of TINYINT UNSIGNED: 0 to 255
+
+#### Floating-Point Types
+
+- DECIMAL, FLOAT and DOUBLE
+- DECIMAL is used for exact values and FLOAT and DOUBLE are used for approximate values
+
+  ```sql
+  CREATE TABLE my_table (
+    price DECIMAL(10, 2),
+    weight FLOAT
+  );
+  ```
+
+- DECIMAL(10, 2) can store 8 digits before the decimal point and 2 digits after the decimal point
+
+##### FLOAT vs DOUBLE
+
+- FLOAT is a single-precision floating-point number and DOUBLE is a double-precision floating-point number
+- DOUBLE is faster and more accurate but takes more space
+- FLOAT takes 4 bytes and DOUBLE takes 8 bytes
+
+## Date and Time
+
+Date and time data types are used to store date and time values.
+
+#### DATE
+
+- Used to store date values in the format 'YYYY-MM-DD'
+
+  ```sql
+  CREATE TABLE my_table (
+    dob DATE
+  );
+  ```
+
+- Example: '2021-08-04'
+
+#### TIME
+
+- Used to store time values in the format 'HH:MM:SS'
+
+  ```sql
+  CREATE TABLE my_table (
+    time TIME
+  );
+  ```
+
+- Example: '12:30:45'
+
+#### DATETIME
+
+- Used to store date and time values in the format 'YYYY-MM-DD HH:MM:SS'
+
+  ```sql
+  CREATE TABLE my_table (
+    created_at DATETIME
+  );
+  ```
+
+- Example: '2021-08-04 12:30:45'
+
+#### TIMESTAMP
+
+- Used to store the current date and time in the format 'YYYY-MM-DD HH:MM:SS'
+- Consumes less space than DATETIME
+- Supports smaller range of values (1970-2038)
+
+  ```sql
+  CREATE TABLE my_table (
+    updated_at TIMESTAMP
+  );
+  ```
+
+- Suitable for fields like `created_at` and `updated_at`
+- Automatically updates when a record is created or updated
+
+  ```sql
+  CREATE TABLE my_table (
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT NOW ON UPDATE NOW()
+  );
+  ```
+
+#### CURDATE and CURTIME
+
+- Used to get the current date and time
+
+  ```sql
+  SELECT CURDATE();
+  SELECT CURTIME();
+  ```
+
+- Example: '2021-08-04' and '12:30:45'
+
+#### NOW
+
+- Used to get the current date and time
+
+  ```sql
+  SELECT NOW();
+  ```
+
+- Example: '2021-08-04 12:30:45'
+
+### Date Functions
+
+Date functions are used to perform operations on date and time values.
+
+- `DAY()` -> Get the day of the month
+
+  ```sql
+  SELECT DAY('2021-08-04'); -- 4
+  ```
+
+- `DAYNAME()` -> Get the name of the day
+
+  ```sql
+  SELECT DAYNAME('2021-08-04'); -- Wednesday
+  ```
+
+- `DAYOFYEAR()` -> Get the day of the year
+
+  ```sql
+  SELECT DAYOFYEAR('2021-08-04'); -- 216
+  ```
+
+- `MONTHNAME()` -> Get the name of the month
+
+  ```sql
+  SELECT MONTHNAME('2021-08-04'); -- August
+  ```
+
+### Time Functions
+
+Time functions are used to perform operations on time values.
+
+- `HOUR()` -> Get the hour
+
+  ```sql
+  SELECT HOUR('12:30:45'); -- 12
+  ```
+
+- `MINUTE()` -> Get the minute
+
+  ```sql
+  SELECT MINUTE('12:30:45'); -- 30
+  ```
+
+### Formatting Dates
+
+We can format date and time values using the `DATE_FORMAT` function and a bunch of format specifiers.
+
+```sql
+SELECT DATE_FORMAT('2021-08-04', '%d-%m-%Y'); -- 04-08-2021
+```
+
+- `%d` -> Day of the month
+- `%m` -> Month
+- `%Y` -> Year
+- `%H` -> Hour
+- `%i` -> Minute
+- `%s` -> Second
+
+```sql
+SELECT DATE_FORMAT('12:30:45', '%H:%i:%s'); -- 12:30:45
+```
+
+### Maths and Dates
+
+We can perform mathematical operations on date and time values.
+
+- `DATE_ADD()` -> Add a date or time interval to a date
+
+  ```sql
+  SELECT DATE_ADD('2021-08-04', INTERVAL 1 DAY); -- 2021-08-05
+  ```
+
+- `DATE_SUB()` -> Subtract a date or time interval from a date
+
+  ```sql
+  SELECT DATE_SUB('2021-08-04', INTERVAL 1 DAY); -- 2021-08-03
+  ```
+
+- `DATEDIFF()` -> Get the difference between two dates
+
+  ```sql
+  SELECT DATEDIFF('2021-08-04', '2021-08-01'); -- 3
+  ```
+
+- `TIMESTAMPDIFF()` -> Get the difference between two timestamps
+
+  ```sql
+  SELECT TIMESTAMPDIFF(MINUTE, '2021-08-04 12:30:45', '2021-08-04 12:45:45'); -- 15
+  ```
