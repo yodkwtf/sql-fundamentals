@@ -1,31 +1,98 @@
-# SQL Fundamentals
+## Table of Contents
+
+1. [Introduction to SQL](#introduction-to-sql)
+2. [Installation and Setup](#installation-and-setup)
+3. [What are Databases?](#databases)
+4. [Tables in MySQL](#tables)
+5. [Constraints](#constraints)
+6. [Inserting Data](#inserting-data)
+7. [CRUD Operations](#crud-operations)
+8. [String Functions](#string-functions)
+9. [Refining Selections](#refining-selections)
+10. [Aggregate Functions](#aggregate-functions)
+11. [Data Types](#data-types-1)
+12. [Date and Time](#date-and-time)
+13. [Comparison and Logical Operators](#comparison-and-logical-operators)
+14. [Alter Table](#alter-table)
+15. [Data Relationships](#data-relationships)
+16. [Joins and Its Types](#joins)
+17. [Views and SQL Modes](#views-and-sql-modes)
+18. [Window Functions](#window-functions)
+19. [Database Triggers](#database-triggers)
+
+## Introduction to SQL
 
 Structured Query Language (SQL) is a standard language to communicate with a database and perform tasks such as querying, updating, inserting and deleting data. It is used to interact with relational databases such as MySQL, PostgreSQL, SQL Server, Oracle, etc.
 
-## Table of Contents
+#### SQL vs MySQL
 
-1. [Introduction to Databases](#databases)
-2. [Tables in MySQL](#tables)
-3. [Constraints](#constraints)
-4. [Inserting Data](#inserting-data)
-5. [CRUD Operations](#crud-operations)
-6. [String Functions](#string-functions)
-7. [Refining Selections](#refining-selections)
-8. [Aggregate Functions](#aggregate-functions)
-9. [Data Types](#data-types-1)
-10. [Date and Time](#date-and-time)
-11. [Comparison and Logical Operators](#comparison-and-logical-operators)
-12. [Alter Table](#alter-table)
-13. [Data Relationships](#data-relationships)
-14. [Joins and Its Types](#joins)
-15. [Views and SQL Modes](#views-and-sql-modes)
-16. [Window Functions](#window-functions)
-17. [Database Triggers](#database-triggers)
+- SQL is a language and MySQL is a database management system
+- SQL is used to communicate with a database and MySQL is used to store and manage the data
+- Other database management systems that use SQL are PostgreSQL, SQL Server, Oracle, etc.
+- All SQL DBMSs have its own implementation of features
 
-<!-- Introduction (47) -->
-<!-- MySQL vs SQL (49 & 50) -->
-<!-- Database vs DBMS (49) -->
-<!-- Installation and Setup (50 - 52) -->
+#### Database vs DBMS
+
+- A database is a collection of data like phonebook, music library, etc.
+- A database management system (DBMS) is a software that is used to manage the database like MySQL, PostgreSQL, SQL Server, Oracle, etc.
+
+#### SQL vs NoSQL
+
+- SQL is a relational database management system (RDBMS) and NoSQL is a non-relational database management system
+- SQL databases are table-based and NoSQL databases are document, key-value, wide-column, or graph-based
+- SQL databases are better for complex queries and NoSQL databases are better for hierarchical data storage
+- SQL databases are vertically scalable and NoSQL databases are horizontally scalable
+- SQL databases are better for multi-row transactions and NoSQL databases are better for unstructured data like documents or JSON
+
+## Installation and Setup
+
+MySQL can be installed from the official website or using a package manager like Homebrew.
+
+#### MySQL Server
+
+- MySQL server is used to store and manage the data
+- It listens on port 3306 by default
+- It can be started, stopped and restarted using the command line
+
+#### MySQL Workbench
+
+- Allows writing and running SQL queries in files
+- Supports saving and opening SQL files
+
+#### Download and Install
+
+1. Visit MySQL official website
+2. Go to **MySQl Installer Method** and download the installer
+3. Open the installer and check the tools you want to install
+   1. Select the custom option
+   2. Remove the Visual Studio option (2GB)
+4. Click on next and next to download the packages
+5. Click on execute to install the packages
+6. Configuration can be left as default
+7. Create a strong root user password
+   1. Password would be used to login to the MySQL server
+   2. REMEMBER THE PASSWORD
+8. Keep clicking next and finish to complete the installation
+
+#### Getting CLI Up and Running
+
+1. Search for MySQL Command Line Client
+2. Enter the root user password
+3. Client is now connected to the MySQL server
+4. Run SQL queries directly from the command line
+5. Run SQL files using the command - `source file_name.sql`
+6. Type `quit` to exit the client
+
+#### Getting Workbench Up and Running
+
+1. Search for MySQL Workbench
+2. Open the needed connection
+3. Enter the root user password
+4. Workbench is now connected to the MySQL server
+5. Run SQL queries
+6. Click on the lightning bolt to execute the query
+7. Click on the floppy disk to save the query
+
 <!-- Running SQL from Command Line (74) -->
 
 ## Databases
