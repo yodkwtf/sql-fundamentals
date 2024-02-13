@@ -22,19 +22,19 @@
 
 ## Introduction to SQL
 
-Structured Query Language (SQL) is a standard language to communicate with a database and perform tasks such as querying, updating, inserting and deleting data. It is used to interact with relational databases such as MySQL, PostgreSQL, SQL Server, Oracle, etc.
+Structured Query Language (SQL) is a standard language to communicate with a database and perform tasks such as querying, updating, inserting, and deleting data. It is used to interact with relational databases such as MySQL, PostgreSQL, SQL Server, Oracle, etc.
 
 #### SQL vs MySQL
 
 - SQL is a language and MySQL is a database management system
 - SQL is used to communicate with a database and MySQL is used to store and manage the data
 - Other database management systems that use SQL are PostgreSQL, SQL Server, Oracle, etc.
-- All SQL DBMSs have its own implementation of features
+- All SQL DBMSs have their own implementation of features
 
 #### Database vs DBMS
 
-- A database is a collection of data like phonebook, music library, etc.
-- A database management system (DBMS) is a software that is used to manage the database like MySQL, PostgreSQL, SQL Server, Oracle, etc.
+- A database is a collection of data like a phonebook, music library, etc.
+- A database management system (DBMS) is software that is used to manage the database like MySQL, PostgreSQL, SQL Server, Oracle, etc.
 
 #### SQL vs NoSQL
 
@@ -52,7 +52,7 @@ MySQL can be installed from the official website or using a package manager like
 
 - MySQL server is used to store and manage the data
 - It listens on port 3306 by default
-- It can be started, stopped and restarted using the command line
+- It can be started, stopped, and restarted using the command line
 
 #### MySQL Workbench
 
@@ -61,12 +61,12 @@ MySQL can be installed from the official website or using a package manager like
 
 #### Download and Install
 
-1. Visit MySQL official website
-2. Go to **MySQl Installer Method** and download the installer
+1. Visit MySQL's official website
+2. Go to **MySQL Installer Method** and download the installer
 3. Open the installer and check the tools you want to install
    1. Select the custom option
    2. Remove the Visual Studio option (2GB)
-4. Click on next and next to download the packages
+4. Click on Next and Next to download the packages
 5. Click on execute to install the packages
 6. Configuration can be left as default
 7. Create a strong root user password
@@ -78,7 +78,7 @@ MySQL can be installed from the official website or using a package manager like
 
 1. Search for MySQL Command Line Client
 2. Enter the root user password
-3. Client is now connected to the MySQL server
+3. The client is now connected to the MySQL server
 4. Run SQL queries directly from the command line
 5. Run SQL files using the command - `source file_name.sql`
 6. Type `quit` to exit the client
@@ -97,11 +97,11 @@ MySQL can be installed from the official website or using a package manager like
 
 ## Databases
 
-A database is a collection of tables. It is a container for tables and other objects. We can multiple databases in a single SQL Server instance.
+A database is a collection of tables. It is a container for tables and other objects. We can have multiple databases in a single SQL Server instance.
 
 #### Queries
 
-- Get the list of databases in the server
+- Get the list of databases on the server
 
   ```sql
   SHOW DATABASES;
@@ -188,7 +188,7 @@ Each column in a table has a specific data type. The data type defines the kind 
 - Single line comment
 
   ```sql
-  -- This is a single line comment
+  -- This is a single-line comment
   ```
 
 - Multi-line comment
@@ -332,7 +332,7 @@ Insert statements are used to insert data into a table. They take the table name
 
 ## CRUD Operations
 
-CRUD stands for Create, Read, Update and Delete. These are the four basic operations that can be performed on a database.
+CRUD stands for Create, Read, Update, and Delete. These are the four basic operations that can be performed on a database.
 
 ### Create
 
@@ -426,7 +426,7 @@ String functions are used to perform operations on strings like searching for a 
 #### SUBSTRING
 
 - Used to extract a part of a string
-- Takes input string, start position and length as arguments
+- Takes input string, start position, and length as arguments
 
   ```sql
   SELECT SUBSTRING('Hello World', 1, 5); -- Hello
@@ -444,7 +444,7 @@ String functions are used to perform operations on strings like searching for a 
 #### REPLACE
 
 - Used to replace all occurrences of a substring within a string
-- Takes input string, old substring and new substring as arguments
+- Takes input string, old substring, and new substring as arguments
 
   ```sql
   SELECT REPLACE('www.example.com', 'w.', 'W.'); -- wwW.example.com
@@ -478,7 +478,7 @@ String functions are used to perform operations on strings like searching for a 
 #### INSERT
 
 - Used to insert a substring into a string at a specified position
-- Takes input string, start position, how many characters to remove and new substring as arguments
+- Takes input string, start position, how many characters to remove, and new substring as arguments
 
   ```sql
   SELECT INSERT('Hello Bobby', 7, 4, 'There'); -- Hello Therey
@@ -663,12 +663,12 @@ Aggregate functions are used to perform calculations on a set of values and retu
 
 ## Data Types
 
-There are many data types in SQL but only few are used frequently.
+There are many data types in SQL but only a few are used frequently.
 
 #### CHAR and VARCHAR
 
 - CHAR is fixed length and VARCHAR is variable length
-- CHAR is faster for fixed length data and VARCHAR is faster for variable length data
+- CHAR is faster for fixed-length data and VARCHAR is faster for variable-length data
 
   ```sql
   CREATE TABLE my_table (
@@ -1184,7 +1184,7 @@ Data relationships are used to connect data in different tables. There are three
 
 ## Joins
 
-Joins are used to combine rows from two or more tables based on a related column between them.
+Joins combine rows from two or more tables based on a related column between them.
 
 ### Cross Joins
 
@@ -1316,7 +1316,7 @@ Joins are used to combine rows from two or more tables based on a related column
 ### SQL Modes
 
 - SQL modes are used to configure the behavior of the MySQL server
-- They can be set globally, per session or per query
+- They can be set globally, per session, or query
 
   ```sql
   SET GLOBAL sql_mode = 'modes';
@@ -1421,7 +1421,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
 - Used to perform an action before or after a new record is inserted into a table
 
   ```sql
-  DELIMITTER $$
+  DELIMITER $$
     CREATE TRIGGER my_trigger
     BEFORE INSERT ON my_table
     FOR EACH ROW
@@ -1429,7 +1429,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
       INSERT INTO log_table (message) VALUES ('New record inserted');
     END;
   $$
-  DELIMITTER ;
+  DELIMITER ;
   ```
 
 #### BEFORE/AFTER UPDATE
@@ -1437,7 +1437,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
 - Used to perform an action before or after a record is updated in a table
 
   ```sql
-  DELIMITTER $$
+  DELIMITER $$
     CREATE TRIGGER my_trigger
     AFTER UPDATE ON my_table
     FOR EACH ROW
@@ -1445,7 +1445,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
       INSERT INTO log_table (message) VALUES ('Record updated');
     END;
   $$
-  DELIMITTER ;
+  DELIMITER ;
   ```
 
 #### BEFORE/AFTER DELETE
@@ -1453,7 +1453,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
 - Used to perform an action before or after a record is deleted from a table
 
   ```sql
-  DELIMITTER $$
+  DELIMITER $$
     CREATE TRIGGER my_trigger
     BEFORE DELETE ON my_table
     FOR EACH ROW
@@ -1461,7 +1461,7 @@ A trigger is a set of SQL statements that automatically "fires" when a specific 
       INSERT INTO log_table (message) VALUES ('Record deleted');
     END;
   $$
-  DELIMITTER ;
+  DELIMITER ;
   ```
 
 #### Managing Triggers
